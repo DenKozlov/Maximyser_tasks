@@ -13,15 +13,15 @@
 
 (function () {
     function getUnique(arr) {
-        var newArr = [];
-        Array.prototype.forEach.call(arr, function (elem, i, arr) {
-            if(newArr.indexOf(elem) === -1) {
-                newArr.push(elem);
-            }
+        if(!Array.isArray(arr)) {
+            arr = Array.prototype.slice.call(arr);
+        }
 
+        return arr.filter(function (elem, i, arr) {
+
+            return arr.indexOf(elem) === i;
         });
 
-        return newArr;
     }
 
     var a = {};
